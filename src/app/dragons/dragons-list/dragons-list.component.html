@@ -1,0 +1,26 @@
+<section class="container-fluid p-2 p-md-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <h1 class="p-0">All Dragons</h1>
+      <a
+        *ngFor="let dragon of dragonList"
+        class="d-flex justify-content-between mb-1"
+      >
+        <ac-avatar
+          image="https://static.thenounproject.com/png/1387590-200.png"
+          [title]="dragon.name"
+          [subtitle]="dragon.type"
+        >
+        </ac-avatar>
+        <div>
+          <ac-button theme="primary" fill="clear" shape="round" tooltip-bottom="Edit" icon-only>
+            <i class="fa fa-edit"></i>
+          </ac-button>
+          <ac-button theme="alert" fill="clear" shape="round" tooltip-bottom="Delete" icon-only>
+            <i class="fa fa-trash"></i>
+          </ac-button>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

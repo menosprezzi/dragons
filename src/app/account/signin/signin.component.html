@@ -1,0 +1,25 @@
+<section class="container-fluid p-2 p-md-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <form (formSubmit)="createAccount()">
+        <ac-card>
+          <div slot="header">
+            <h1 class="p-0 m-0">Signin</h1>
+          </div>
+          <div slot="content">
+            <ac-input name="username" label="User" #usernameInput required></ac-input>
+            <ac-input name="password" label="Password" type="password" #passwordInput required></ac-input>
+          </div>
+          <div slot="actions" class="justify-content-end">
+            <ac-button (click)="navigateToSignup()" class="mr-1" theme="primary" fill="clear">
+              Create your Account
+            </ac-button>
+            <ac-button type="submit" theme="primary">
+              Signin
+            </ac-button>
+          </div>
+        </ac-card>
+      </form>
+    </div>
+  </div>
+</section>

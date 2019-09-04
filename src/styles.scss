@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@accera/solar-components/dist/solar.css";
+@import "~@accera/solar-components/dist/collection/scss/variables";
+
+:root {
+  // Primary Color
+  --color-primary-normal: #00e66e;
+  --color-primary-normal-rgb: #{color-to-rgb-list(#00e66e)};
+  --color-primary-dark: #{darken(#00e66e, 10%)};
+  --color-primary-dark-rgb: #{color-to-rgb-list(darken(#00e66e, 10%))};
+  --color-primary-darker: #{darken(#00e66e, 20%)};
+  --color-primary-darker-rgb: #{color-to-rgb-list(darken(#00e66e, 20%))};
+  --color-primary-light: #{lighten(#00e66e, 10%)};
+  --color-primary-light-rgb: #{color-to-rgb-list(lighten(#00e66e, 10%))};
+  --color-primary-lighter: #{lighten(#00e66e, 20%)};
+  --color-primary-lighter-rgb: #{color-to-rgb-list(lighten(#00e66e, 20%))};
+
+  // Secondary
+  --color-secondary-normal: #2e323c;
+  --color-secondary-normal-rgb: #{color-to-rgb-list(#2e323c)};
+  --color-secondary-dark: #{darken(#2e323c, 10%)};
+  --color-secondary-dark-rgb: #{color-to-rgb-list(darken(#2e323c, 10%))};
+  --color-secondary-darker: #{darken(#2e323c, 20%)};
+  --color-secondary-darker-rgb: #{color-to-rgb-list(darken(#2e323c, 20%))};
+  --color-secondary-light: #{lighten(#2e323c, 10%)};
+  --color-secondary-light-rgb: #{color-to-rgb-list(lighten(#2e323c, 10%))};
+  --color-secondary-lighter: #{lighten(#2e323c, 20%)};
+  --color-secondary-lighter-rgb: #{color-to-rgb-list(lighten(#2e323c, 20%))};
+}
+
+ac-input {
+  margin-bottom: $spacer-tiny;
+}
