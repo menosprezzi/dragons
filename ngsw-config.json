@@ -11,7 +11,8 @@
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
-          "/*.js"
+          "/*.js",
+          "https://kit-free.fontawesome.com/**"
         ]
       }
     }, {
@@ -25,5 +26,16 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [{
+    "name": "api-performance",
+    "urls": [
+      "http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon/**"
+    ],
+    "cacheConfig": {
+      "maxSize": 100,
+      "maxAge": "1d",
+      "strategy": "performance"
+    }
+  }]
 }

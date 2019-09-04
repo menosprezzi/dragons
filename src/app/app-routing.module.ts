@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/auth/auth.guard';
+import { NoAuthGuard } from './core/auth/no-auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'dragons', pathMatch: 'full' },
-  { path: 'account', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule) },
+  {
+    path: 'account',
+    canActivate: [NoAuthGuard],
+    loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule)
+  },
 
   // Private Routes
   {

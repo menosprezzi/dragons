@@ -13,10 +13,10 @@
         >
         </ac-avatar>
         <div>
-          <ac-button theme="primary" fill="clear" shape="round" tooltip-bottom="Edit" icon-only>
+          <ac-button [routerLink]="[dragon.id]" theme="primary" fill="clear" shape="round" tooltip-bottom="Edit" icon-only>
             <i class="fa fa-edit"></i>
           </ac-button>
-          <ac-button theme="alert" fill="clear" shape="round" tooltip-bottom="Delete" icon-only>
+          <ac-button (click)="delete(dragon)" theme="alert" fill="clear" shape="round" tooltip-bottom="Delete" icon-only>
             <i class="fa fa-trash"></i>
           </ac-button>
         </div>

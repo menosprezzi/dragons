@@ -1,5 +1,6 @@
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { StorageMap } from '@ngx-pwa/local-storage';
+import { map } from 'rxjs/operators';
 import { User } from './auth.types';
 
 @Injectable({
@@ -7,31 +8,34 @@ import { User } from './auth.types';
 })
 export class AuthService {
   static STORAGE_USER_KEY = 'USER';
-  isAuthenticated = false;
-  currentUser: User;
+  private $currentUser: BehaviorSubject<User> = new BehaviorSubject(null);
 
-  constructor(
-    private storage: StorageMap
-  ) { }
+  readonly currentUser = this.$currentUser.asObservable();
+  readonly isAuthenticated = this.$currentUser.asObservable()
+    .pipe(map(x => !!x));
+
+  constructor() { }
 
   async signUp(user: User) {
     // Do some API call here!
-    this.currentUser = user;
-    this.isAuthenticated = true;
-
-    console.log(this.storage);
-    await this.storage.set(AuthService.STORAGE_USER_KEY, this.currentUser)
-      .toPromise();
+    this.$currentUser.next(user);
+    localStorage.setItem(AuthService.STORAGE_USER_KEY, JSON.stringify(user));
   }
 
   async restoreFromCache() {
-    return await this.storage.get(AuthService.STORAGE_USER_KEY).toPromise() as User;
+    const rawUser = localStorage.getItem(AuthService.STORAGE_USER_KEY);
+    return rawUser ? JSON.parse(rawUser) as User : null;
   }
 
   async ensureUser() {
-    if (!this.currentUser) {
-      this.currentUser = await this.restoreFromCache();
-      this.isAuthenticated = !!this.currentUser;
+    if (!this.$currentUser.getValue()) {
+      const userFromCache = await this.restoreFromCache();
+      this.$currentUser.next(userFromCache);
     }
+  }
+
+  async signOut() {
+    this.$currentUser.next(null);
+    localStorage.removeItem(AuthService.STORAGE_USER_KEY)
   }
 }

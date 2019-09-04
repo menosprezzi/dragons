@@ -20,4 +20,8 @@ export class DragonsService {
   delete(id): Observable<void> {
     return this.http.delete<void>(this.environment.dragonsApi + `/${id}`);
   }
+
+  get(id): Observable<Dragon> {
+    return this.http.get<Dragon>(this.environment.dragonsApi + `${id}`);
+  }
 }

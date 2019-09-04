@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StorageModule } from '@ngx-pwa/local-storage';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { NoAuthGuard } from './auth/no-auth.guard';
 
 
 
@@ -10,11 +10,18 @@ import { AuthGuard } from './auth/auth.guard';
   declarations: [],
   imports: [
     CommonModule,
-    StorageModule
   ],
   providers: [
+    { provide: APP_INITIALIZER, useFactory: CoreModule.initModuleFactory, deps: [AuthService], multi: true },
     AuthService,
-    AuthGuard
-  ]
+    AuthGuard,
+    NoAuthGuard
+  ],
 })
-export class CoreModule { }
+export class CoreModule {
+  static initModuleFactory(authService: AuthService) {
+    return () => {
+      return authService.ensureUser();
+    };
+  }
+}

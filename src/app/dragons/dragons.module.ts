@@ -13,6 +13,11 @@ import { DragonsService } from './dragons.service';
         path: '',
         loadChildren: () => import('./dragons-list/dragons-list.module')
           .then(mod => mod.DragonsListModule)
+      },
+      {
+        path: ':id',
+        loadChildren: () => import('./dragons-edit/dragons-edit.module')
+          .then(mod => mod.DragonsEditModule)
       }
     ]),
     CommonModule,

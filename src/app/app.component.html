@@ -2,8 +2,8 @@
   <ac-header slot="header">
     <div class="font-bold">Dragons</div>
     <div slot="actions">
-      <ac-button theme="primary" fill="clear" icon-only>
-        <i></i>
+      <ac-button *ngIf="$isAuthenticated | async" (click)="signOut()" fill="clear" shape="round" icon-only>
+        <i class="fa fa-sign-out"></i>
       </ac-button>
     </div>
   </ac-header>
