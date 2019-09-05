@@ -11,8 +11,13 @@
             <ac-input name="username" label="User" #usernameInput required></ac-input>
             <ac-input name="password" label="Password" type="password" #passwordInput required></ac-input>
           </div>
-          <div slot="actions" class="justify-content-end">
+          <div slot="actions" class="justify-content-between">
+            <ac-button (click)="goBack()" class="mr-1" theme="primary" fill="clear">
+              <i slot="icon-start" class="fa fa-arrow-left"></i>
+              Back
+            </ac-button>
             <ac-button type="submit" theme="primary">
+              <i slot="icon-start" class="fa fa-check"></i>
               Signup!
             </ac-button>
           </div>

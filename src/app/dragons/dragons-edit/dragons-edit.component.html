@@ -1,11 +1,41 @@
 <section class="container-fluid p-2 p-md-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
-      <ac-card>
-        <section>
-
-        </section>
-      </ac-card>
+      <form (formSubmit)="save()">
+        <ac-card>
+          <div slot="header">
+            <h1 *ngIf="isEditing" class="p-0 m-0">Edit Dragon</h1>
+            <h1 *ngIf="!isEditing" class="p-0 m-0">Create Dragon</h1>
+          </div>
+          <div slot="content">
+            <div class="row">
+              <div class="col-12 col-sm-8 d-flex">
+                <img
+                  class="dragons-edit__avatar-image"
+                  src="https://static.thenounproject.com/png/1387590-200.png"
+                />
+                <ac-input label="Name" #nameInput [value]="dragon.name" class="w-100" required></ac-input>
+              </div>
+              <div class="col-12 col-sm-4">
+                <ac-input label="Type" #typeInput [value]="dragon.type" class="w-100" required></ac-input>
+              </div>
+            </div>
+            <ac-input label="Title" #titleInput [value]="dragon.title" class="w-100"></ac-input>
+            <ac-input label="Description" #descriptionInput [value]="dragon.description" class="w-100"></ac-input>
+            <ac-input label="History" #historyInput [value]="dragon.history" class="w-100"></ac-input>
+          </div>
+          <div slot="actions" class="d-flex justify-content-between">
+            <ac-button (click)="goBack()" class="mr-1" theme="primary" fill="clear">
+              <i slot="icon-start" class="fa fa-arrow-left"></i>
+              Back
+            </ac-button>
+            <ac-button type="submit" theme="primary" [loading]="isSaving">
+              <i slot="icon-start" class="fa fa-check"></i>
+              Save
+            </ac-button>
+          </div>
+        </ac-card>
+      </form>
     </div>
   </div>
 </section>

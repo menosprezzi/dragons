@@ -1,0 +1,9 @@
+@import "~@accera/solar-components/dist/collection/scss/variables";
+
+.dragons-edit__avatar-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 44px;
+  margin-right: $spacer-tiny;
+  box-shadow: $z1-shadow;
+}

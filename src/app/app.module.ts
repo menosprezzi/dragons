@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { StorageModule } from '@ngx-pwa/local-storage';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    StorageModule.forRoot({ IDBNoWrap: true })
   ],
   providers: [
     { provide: 'APP_ENVIRONMENT', useValue: environment }

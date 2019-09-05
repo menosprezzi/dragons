@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
-import {User} from '../../core/auth/auth.types';
+import { User } from '../../core/auth/auth.types';
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +15,7 @@ export class SignupComponent implements OnInit {
   @ViewChild('passwordInput', { static: true }) passwordInput: ElementRef;
 
   constructor(
+    private location: Location,
     private authService: AuthService,
     private router: Router
   ) { }
@@ -29,6 +31,10 @@ export class SignupComponent implements OnInit {
     };
     await this.authService.signUp(user);
     await this.router.navigate(['dragons']);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

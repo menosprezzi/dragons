@@ -22,6 +22,14 @@ export class DragonsService {
   }
 
   get(id): Observable<Dragon> {
-    return this.http.get<Dragon>(this.environment.dragonsApi + `${id}`);
+    return this.http.get<Dragon>(this.environment.dragonsApi + `/${id}`);
+  }
+
+  create(dragon: Dragon) {
+    return this.http.post(this.environment.dragonsApi, dragon);
+  }
+
+  save(dragon: Dragon) {
+    return this.http.put(this.environment.dragonsApi + `/${dragon.id}`, dragon);
   }
 }
