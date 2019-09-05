@@ -1,0 +1,14 @@
+image: node:8
+
+pages:
+  script:
+    - npm install @angular/cli
+    - node_modules/@angular/cli/bin/ng build --prod
+  artifacts:
+    paths:
+      - dist/sicredi-dragons
+  cache:
+    paths:
+      - node_modules
+  only:
+    - master
