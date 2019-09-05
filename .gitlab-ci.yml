@@ -4,9 +4,10 @@ pages:
   script:
     - npm install @angular/cli
     - node_modules/@angular/cli/bin/ng build --prod
+    - cp -avr ./dist/sicredi-dragons ./public
   artifacts:
     paths:
-      - dist/sicredi-dragons
+      - public
   cache:
     paths:
       - node_modules
