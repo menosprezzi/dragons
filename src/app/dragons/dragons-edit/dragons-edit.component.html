@@ -4,8 +4,10 @@
       <form (formSubmit)="save()">
         <ac-card>
           <div slot="header">
-            <h1 *ngIf="isEditing" class="p-0 m-0">Edit Dragon</h1>
-            <h1 *ngIf="!isEditing" class="p-0 m-0">Create Dragon</h1>
+            <h1 *ngIf="isEditing; else createHeaderBlock" class="p-0 m-0">Edit Dragon</h1>
+            <ng-template #createHeaderBlock>
+              <h1 class="p-0 m-0">Create Dragon</h1>
+            </ng-template>
           </div>
           <div slot="content">
             <div class="row">
