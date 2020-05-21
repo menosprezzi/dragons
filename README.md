@@ -1,4 +1,5 @@
 # Dragons
+![Unit Tests](https://github.com/menosprezzi/dragons/workflows/Unit%20Tests/badge.svg?branch=master)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
@@ -29,6 +30,10 @@ O Stencil é um compiler de WebComponents, e leva em consideração diversos fat
 Estruturalmente, esse projeto foi criado com o conceito de [Atomic Design](http://atomicdesign.bradfrost.com/) em mente. Tudo isso facilita o desenvolvimento de uma biblioteca agnóstica a frameworks e reutilizável.
 Porém, WebComponents não é uma bala de prata, mas está sendo um caso de sucesso onde se possui diversos produtos desenvolvidos com tecnologias e times diferentes, e em até produtos legados que utilizem de SSR em .NET MVC ou semelhantes.
 
+#### Versionamento e CI/CD
+Foi realizado o setup de CI utilizando os workflows do Github Actions. O Build e os Testes Unitários são executados mediante a ações de Merge e PR para a branch master. Aliás, sugiro este workflow de branches para estes projetos:
+![Versionamento](https://github.com/menosprezzi/dragons/blob/master/.github/wiki/res/images/git-flow-chart.png)
+
 ### Considerações
 Desenvolvendo com CBA em Angular podemos aprimorar o Tree-shake e LazyLoad das páginas, porém ([enquanto aguardamos o lançamento do Ivy](https://blog.angularindepth.com/angular-revisited-tree-shakable-components-and-optional-ngmodules-329a4629276d))
 adicionar um módulo para cada Component muitas vezes pode ser chateante, ainda mais em grandes aplicações. Utilizar de [SCAM](https://medium.com/wishtack/your-angular-module-is-a-scam-b4136ca3917b) seria uma alternativa viável para reduzir arquivos repetitivos.
@@ -42,7 +47,7 @@ Manter os testes unitários é de grande importância, sempre realizando o Mock 
 * Ex: [dragons.service.spec.ts](https://github.com/menosprezzi/dragons/blob/master/src/app/dragons/dragons.service.spec.ts)
 
 #### WebComponents
-O angular Pode paracer estranho algumas seções do código por conta da utilização de WebComponents:
+Pode paracer estranho algumas seções do código por conta da utilização de WebComponents:
 
 Por utilizar de WebComponents, o Angular não sabe como acessar as interfaces de um Input customizado. Sendo assim, não foi possível a utilizacação do módulo `@angular/forms`,
 o que complica na utilização das ferramentas de criação de formulários do Angular. Para isso, deveria ser desenvolvido diretivas que implementem a [AbstractControl](https://angular.io/api/forms/AbstractControl) e e entendam as APIs de cada Input, como [é feito pelo Ionic 4](https://github.com/ionic-team/ionic/tree/master/angular/src/directives).
