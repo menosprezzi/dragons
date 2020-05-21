@@ -1,6 +1,8 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DragonsEditComponent } from './dragons-edit.component';
+import { SharedTestingModule } from '../../../testing/shared.testing.module';
 
 describe('DragonsEditComponent', () => {
   let component: DragonsEditComponent;
@@ -8,7 +10,9 @@ describe('DragonsEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DragonsEditComponent ]
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      declarations: [ DragonsEditComponent ],
+      imports: [ SharedTestingModule ],
     })
     .compileComponents();
   }));

@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [DragonsEditComponent],
+  declarations: [ DragonsEditComponent ],
   imports: [
     RouterModule.forChild([{ path: '', component: DragonsEditComponent }]),
     CommonModule
